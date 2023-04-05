@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/services"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/services"
 	"github.com/go-playground/validator/v10"
 	"github.com/rabbitmq/amqp091-go"
 	"go.uber.org/zap"

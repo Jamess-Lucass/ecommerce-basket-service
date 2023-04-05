@@ -5,9 +5,9 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/database"
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/handlers"
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/services"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/database"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/handlers"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/services"
 	"github.com/rabbitmq/amqp091-go"
 	"go.uber.org/zap"
 )

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/models"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/models"
 	"github.com/google/uuid"
 	"github.com/redis/go-redis/v9"
 	"github.com/valyala/fasthttp"

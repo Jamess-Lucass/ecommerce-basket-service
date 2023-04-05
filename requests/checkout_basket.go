@@ -1,7 +1,7 @@
 package requests
 
 import (
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/models"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/models"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 )

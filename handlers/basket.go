@@ -3,8 +3,8 @@ package handlers
 import (
 	"encoding/json"
 
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/models"
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/requests"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/models"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/requests"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
 	"github.com/rabbitmq/amqp091-go"

@@ -1,4 +1,4 @@
-module github.com/Jamess-Lucass/microservice-shop/basket-service
+module github.com/Jamess-Lucass/ecommerce-basket-service
 
 go 1.19
 

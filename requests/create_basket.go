@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/models"
-	"github.com/Jamess-Lucass/microservice-shop/basket-service/utils"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/models"
+	"github.com/Jamess-Lucass/ecommerce-basket-service/utils"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
