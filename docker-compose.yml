@@ -10,10 +10,11 @@ services:
     ports:
       - 1003:8080
     environment:
+      - JWT_SECRET=DockerTestJWTFakeSecret
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_PASSWORD=
-      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_HOST=host.docker.internal
       - RABBITMQ_PORT=5672
       - RABBITMQ_USERNAME=guest
       - RABBITMQ_PASSWORD=guest
@@ -27,15 +28,4 @@ services:
     container_name: ecommerce-basket-service-redis
     ports:
       - 6379:6379
-    restart: on-failure
-
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: ecommerce-basket-service-rabbitmq
-    environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASS=guest
-    ports:
-      - 5672:5672
-      - 15672:15672
     restart: on-failure

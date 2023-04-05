@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/Jamess-Lucass/ecommerce-basket-service/middleware"
 	"github.com/gofiber/contrib/fiberzap"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -23,7 +24,7 @@ func (s *Server) Start() error {
 	f.Put("/api/v1/baskets/:id", s.UpdateBasket)
 	f.Get("/api/v1/baskets/:id", s.GetBasket)
 	f.Delete("/api/v1/baskets/:id", s.DeleteBasket)
-	f.Post("/api/v1/baskets/:id/checkout", s.CheckoutBasket)
+	f.Post("/api/v1/baskets/:id/checkout", middleware.OptionalJWT(), s.CheckoutBasket)
 
 	f.Use(func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"code": fiber.StatusNotFound, "message": "No resource found"})

@@ -1,9 +1,11 @@
 package requests
 
 import (
+	"github.com/Jamess-Lucass/ecommerce-basket-service/middleware"
 	"github.com/Jamess-Lucass/ecommerce-basket-service/models"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )
 
 type CheckoutBasketRequest struct {
@@ -19,6 +21,7 @@ type CreateOrderRequest struct {
 	Name        string        `json:"name"`
 	PhoneNumber string        `json:"phoneNumber"`
 	Basket      models.Basket `json:"basket"`
+	UserId      uuid.UUID     `json:"userId"`
 }
 
 func (r *CheckoutBasketRequest) Bind(c *fiber.Ctx, order *CreateOrderRequest, v *validator.Validate) error {
@@ -31,9 +34,18 @@ func (r *CheckoutBasketRequest) Bind(c *fiber.Ctx, order *CreateOrderRequest, v 
 	}
 
 	order.Address = r.Address
-	order.Email = r.Email
-	order.Name = r.Name
 	order.PhoneNumber = r.PhoneNumber
+
+	// If the user is signed in, set the user id, which the
+	// name and email can be inferred from, otherwise
+	// set the name and email
+	claims, ok := c.Locals("claims").(*middleware.Claim)
+	if ok {
+		order.UserId = uuid.MustParse(claims.Subject)
+	} else {
+		order.Email = r.Email
+		order.Name = r.Name
+	}
 
 	return nil
 }
