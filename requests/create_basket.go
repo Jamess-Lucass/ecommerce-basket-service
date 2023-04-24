@@ -42,6 +42,7 @@ func (r *CreateBasketRequest) Bind(c *fiber.Ctx, basket *models.Basket, v *valid
 		if err != nil {
 			return err
 		}
+		defer body.Close()
 
 		var catalog CatalogResponse
 		if err := json.NewDecoder(body).Decode(&catalog); err != nil {
