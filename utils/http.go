@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"fmt"
 	"io"
 	"net/http"
 	"time"
@@ -21,9 +22,14 @@ func HttpGet(uri string) (io.ReadCloser, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer res.Body.Close()
 
 	if res.StatusCode >= 400 {
-		return nil, err
+		body, err := io.ReadAll(res.Body)
+		if err != nil {
+			return nil, err
+		}
+		return nil, fmt.Errorf(string(body))
 	}
 
 	return res.Body, nil
