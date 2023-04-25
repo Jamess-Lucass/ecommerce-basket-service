@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ecommerce-basket-service-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: basket.jameslucas.uk
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ecommerce-basket-service-service
+                port:
+                  number: 80

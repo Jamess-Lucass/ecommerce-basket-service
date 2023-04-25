@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-basket-service-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: ecommerce-basket-service-container
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: value
+            - name: REDIS_HOST
+              value: "ecommerce-basket-service-redis-service.default.svc"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              value: ""
+            - name: RABBITMQ_HOST
+              value: "rabbit-mq.default.svc"
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-mq-default-user
+                  key: username
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rabbit-mq-default-user
+                  key: password
+            - name: CATALOG_SERVICE_BASE_URL
+              value: "http://ecommerce-catalog-service-service.default.svc:80"
