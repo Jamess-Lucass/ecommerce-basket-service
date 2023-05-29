@@ -23,6 +23,10 @@ func (s *Server) GetBasket(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusNotFound).JSON(ErrorResponse{Code: fiber.StatusNotFound, Message: "Could not retrieve basket"})
 	}
 
+	if len(basket.Items) == 0 {
+		return c.Status(fiber.StatusNotFound).JSON(ErrorResponse{Code: fiber.StatusNotFound, Message: "No basket found"})
+	}
+
 	return c.Status(fiber.StatusOK).JSON(basket)
 }
 

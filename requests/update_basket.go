@@ -32,7 +32,7 @@ func (r *UpdateBasketRequest) Bind(c *fiber.Ctx, basket *models.Basket, v *valid
 		return err
 	}
 
-	var items []models.BasketItem
+	items := []models.BasketItem{}
 
 	for _, item := range r.Items {
 		uri := fmt.Sprintf("%s/api/v1/catalog/%s", os.Getenv("CATALOG_SERVICE_BASE_URL"), item.CatalogId)
