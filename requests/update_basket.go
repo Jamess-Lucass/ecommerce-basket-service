@@ -18,6 +18,7 @@ type UpdateBasketRequest struct {
 }
 
 type UpdateBasketItemRequest struct {
+	Id        string `json:"id" validate:"omitempty,uuid"`
 	CatalogId string `json:"catalogId" validate:"required,uuid"`
 	Quantity  uint   `json:"quantity" validate:"required,min=1"`
 }
@@ -45,7 +46,7 @@ func (r *UpdateBasketRequest) Bind(c *fiber.Ctx, basket *models.Basket, v *valid
 			return err
 		}
 
-		if item.CatalogId != "" {
+		if item.Id != "" {
 			basketItem, ok := lo.Find(basket.Items, func(i models.BasketItem) bool {
 				return i.CatalogId == uuid.MustParse(item.CatalogId)
 			})
