@@ -10,7 +10,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/rabbitmq/amqp091-go v1.7.0
 	github.com/redis/go-redis/v9 v9.0.5
-	github.com/samber/lo v1.37.0
+	github.com/samber/lo v1.38.1
 	github.com/valyala/fasthttp v1.48.0
 	go.uber.org/zap v1.24.0
 )
