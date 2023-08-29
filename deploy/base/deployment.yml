@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-basket-service-deployment
+  name: ecommerce-basket-service
   labels:
-    app: ecommerce-basket-service-deployment
+    app: ecommerce-basket-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecommerce-basket-service-deployment
+      app: ecommerce-basket-service
   template:
     metadata:
       labels:
-        app: ecommerce-basket-service-deployment
+        app: ecommerce-basket-service
     spec:
       containers:
-        - name: ecommerce-basket-service-container
+        - name: ecommerce-basket-service
           image: ghcr.io/jamess-lucass/ecommerce-basket-service:latest
           imagePullPolicy: Always
           ports:

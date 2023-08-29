@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ecommerce-basket-service-ingress
+  name: ecommerce-basket-service
   annotations:
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
@@ -14,6 +14,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: ecommerce-basket-service-service
+                name: ecommerce-basket-service
                 port:
                   number: 80

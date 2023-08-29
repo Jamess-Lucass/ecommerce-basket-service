@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-basket-service-redis-deployment
+  name: ecommerce-basket-service-redis
   labels:
-    app: ecommerce-basket-service-redis-deployment
+    app: ecommerce-basket-service-redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecommerce-basket-service-redis-deployment
+      app: ecommerce-basket-service-redis
   template:
     metadata:
       labels:
-        app: ecommerce-basket-service-redis-deployment
+        app: ecommerce-basket-service-redis
     spec:
       containers:
-        - name: ecommerce-basket-service-redis-container
+        - name: ecommerce-basket-service-redis
           image: redis
           ports:
             - name: http
@@ -31,10 +31,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ecommerce-basket-service-redis-service
+  name: ecommerce-basket-service-redis
 spec:
   selector:
-    app: ecommerce-basket-service-redis-deployment
+    app: ecommerce-basket-service-redis
   ports:
     - protocol: TCP
       port: 6379

@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ecommerce-basket-service-service
+  name: ecommerce-basket-service
 spec:
   selector:
-    app: ecommerce-basket-service-deployment
+    app: ecommerce-basket-service
   ports:
     - protocol: TCP
       targetPort: 8080
