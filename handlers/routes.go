@@ -20,6 +20,8 @@ func (s *Server) Start() error {
 		Logger: s.logger,
 	}))
 
+	f.Get("/api/healthz", s.Healthz)
+
 	f.Post("/api/v1/baskets", s.CreateBasket)
 	f.Put("/api/v1/baskets/:id", s.UpdateBasket)
 	f.Get("/api/v1/baskets/:id", s.GetBasket)

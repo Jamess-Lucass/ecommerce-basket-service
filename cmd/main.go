@@ -50,9 +50,10 @@ func main() {
 	}
 	defer ch.Close()
 
+	healthService := services.NewHealthService(db)
 	basketService := services.NewBasketService(db)
 
-	server := handlers.NewServer(logger, ch, basketService)
+	server := handlers.NewServer(logger, ch, healthService, basketService)
 
 	if err := server.Start(); err != nil {
 		logger.Sugar().Fatalf("error starting web server: %v", err)

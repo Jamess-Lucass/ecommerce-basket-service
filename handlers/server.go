@@ -11,14 +11,21 @@ type Server struct {
 	validator     *validator.Validate
 	logger        *zap.Logger
 	rabbitMQ      *amqp091.Channel
+	healthService *services.HealthService
 	basketService *services.BasketService
 }
 
-func NewServer(logger *zap.Logger, rabbitMQ *amqp091.Channel, basketService *services.BasketService) *Server {
+func NewServer(
+	logger *zap.Logger,
+	rabbitMQ *amqp091.Channel,
+	healthService *services.HealthService,
+	basketService *services.BasketService,
+) *Server {
 	return &Server{
 		validator:     validator.New(),
 		logger:        logger,
 		rabbitMQ:      rabbitMQ,
+		healthService: healthService,
 		basketService: basketService,
 	}
 }
