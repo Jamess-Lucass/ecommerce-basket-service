@@ -11,7 +11,7 @@ require (
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/redis/go-redis/v9 v9.1.0
 	github.com/samber/lo v1.38.1
-	github.com/valyala/fasthttp v1.48.0
+	github.com/valyala/fasthttp v1.49.0
 	go.uber.org/zap v1.25.0
 )
 
