@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"net/url"
 	"os"
 
@@ -9,20 +10,24 @@ import (
 	"github.com/Jamess-Lucass/ecommerce-basket-service/handlers"
 	"github.com/Jamess-Lucass/ecommerce-basket-service/services"
 	"github.com/rabbitmq/amqp091-go"
+	"go.elastic.co/apm/module/apmhttp/v2"
+	"go.elastic.co/ecszap"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
-func main() {
-	logger, err := zap.NewProduction()
-	if err != nil {
-		panic(err)
-	}
+var LOG_LEVEL = os.Getenv("LOG_LEVEL")
+var LOG_LEVELS = map[string]zapcore.Level{
+	"DEBUG": zap.DebugLevel,
+	"INFO":  zap.InfoLevel,
+	"WARN":  zap.WarnLevel,
+	"ERROR": zap.ErrorLevel,
+}
 
-	defer func() {
-		if err := logger.Sync(); err != nil {
-			logger.Sugar().Warnf("could not flush: %v", err)
-		}
-	}()
+func main() {
+	encoderConfig := ecszap.NewDefaultEncoderConfig()
+	core := ecszap.NewCore(encoderConfig, os.Stdout, LOG_LEVELS[LOG_LEVEL])
+	logger := zap.New(core, zap.AddCaller())
 
 	db := database.Connect(logger)
 
@@ -49,6 +54,8 @@ func main() {
 		logger.Sugar().Fatalf("error occured opening rabbitMQ channel: %v", err)
 	}
 	defer ch.Close()
+
+	http.DefaultTransport = apmhttp.WrapRoundTripper(http.DefaultTransport, apmhttp.WithClientTrace())
 
 	healthService := services.NewHealthService(db)
 	basketService := services.NewBasketService(db)

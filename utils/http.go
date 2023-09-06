@@ -1,29 +1,30 @@
 package utils
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
-	"time"
+
+	"github.com/gofiber/fiber/v2"
+	"go.elastic.co/apm/module/apmhttp/v2"
 )
 
-func HttpGet(uri string) (io.ReadCloser, error) {
+var tracingClient = apmhttp.WrapClient(http.DefaultClient)
+
+func HttpGet(ctx context.Context, uri string) (io.ReadCloser, error) {
 	req, err := http.NewRequest("GET", uri, nil)
 	if err != nil {
 		return nil, err
 	}
 	req.Header.Set("Content-Type", "application/json")
 
-	client := http.Client{
-		Timeout: 30 * time.Second,
-	}
-
-	res, err := client.Do(req)
+	res, err := tracingClient.Do(req.WithContext(ctx))
 	if err != nil {
 		return nil, err
 	}
 
-	if res.StatusCode >= 400 {
+	if res.StatusCode >= fiber.StatusBadRequest {
 		body, err := io.ReadAll(res.Body)
 		if err != nil {
 			return nil, err

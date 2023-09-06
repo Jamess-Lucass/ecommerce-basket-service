@@ -36,7 +36,7 @@ func (r *UpdateBasketRequest) Bind(c *fiber.Ctx, basket *models.Basket, v *valid
 
 	for _, item := range r.Items {
 		uri := fmt.Sprintf("%s/api/v1/catalog/%s", os.Getenv("CATALOG_SERVICE_BASE_URL"), item.CatalogId)
-		body, err := utils.HttpGet(uri)
+		body, err := utils.HttpGet(c.Context(), uri)
 		if err != nil {
 			return err
 		}

@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    labels:
+      logging/enabled: "true"
     container_name: ecommerce-basket-service
     ports:
       - 1003:8080
@@ -19,6 +21,12 @@ services:
       - RABBITMQ_USERNAME=guest
       - RABBITMQ_PASSWORD=guest
       - CATALOG_SERVICE_BASE_URL=http://host.docker.internal:1002
+      - ENVIRONMENT=development
+      - LOG_LEVEL=info
+      - ELASTIC_APM_SERVER_URL=http://host.docker.internal:8200
+      - ELASTIC_APM_SERVICE_NAME=basket-service
+      - ELASTIC_APM_EXIT_SPAN_MIN_DURATION=1us
+      - ELASTIC_APM_CAPTURE_BODY=all
     depends_on:
       - redis
     restart: on-failure
