@@ -10,12 +10,26 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"go.elastic.co/apm/module/apmfiber/v2"
 	"go.elastic.co/apm/v2"
+	"go.elastic.co/apm/v2/model"
 	"go.uber.org/zap"
+	"go.uber.org/zap/zapcore"
 )
 
 type ErrorResponse struct {
 	Code    uint   `json:"code"`
 	Message string `json:"message"`
+}
+
+type ECSURL struct {
+	model.URL
+}
+
+func (c *ECSURL) MarshalLogObject(enc zapcore.ObjectEncoder) error {
+	if c.Path != "" {
+		enc.AddString("path", c.Path)
+	}
+
+	return nil
 }
 
 func (s *Server) Start() error {
@@ -33,6 +47,7 @@ func (s *Server) Start() error {
 
 	f.Use(fiberzap.New(fiberzap.Config{
 		Logger: s.logger,
+		Fields: []string{"latency", "status", "method"},
 		FieldsFunc: func(c *fiber.Ctx) []zap.Field {
 			var fields []zap.Field
 
@@ -45,6 +60,8 @@ func (s *Server) Start() error {
 					fields = append(fields, zap.String("span.id", span.TraceContext().Span.String()))
 				}
 			}
+
+			fields = append(fields, zap.Object("url", &ECSURL{model.URL{Path: c.OriginalURL()}}))
 
 			return fields
 		},
