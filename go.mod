@@ -4,16 +4,20 @@ go 1.20
 
 require (
 	github.com/go-playground/validator/v10 v10.15.3
-	github.com/gofiber/contrib/fiberzap v1.0.2
-	github.com/gofiber/fiber/v2 v2.49.1
+	github.com/gofiber/contrib/fiberzap/v2 v2.1.0
+	github.com/gofiber/fiber/v2 v2.49.2
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/google/uuid v1.3.1
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/redis/go-redis/extra/redisotel/v9 v9.0.5
 	github.com/redis/go-redis/v9 v9.1.0
 	github.com/samber/lo v1.38.1
-	github.com/valyala/fasthttp v1.49.0
+	go.elastic.co/apm/module/apmfiber/v2 v2.4.4
+	go.elastic.co/apm/module/apmhttp/v2 v2.4.4
+	go.elastic.co/apm/module/apmotel/v2 v2.4.4
+	go.elastic.co/apm/v2 v2.4.4
 	go.elastic.co/ecszap v1.0.2
+	go.opentelemetry.io/otel v1.17.0
 	go.uber.org/zap v1.25.0
 )
 
@@ -29,7 +33,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/gofiber/contrib/fiberzap/v2 v2.1.0 // indirect
 	github.com/joeshaw/multierror v0.0.0-20140124173710-69b34d4ec901 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/leodido/go-urn v1.2.4 // indirect
@@ -41,14 +44,10 @@ require (
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.0.5 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasthttp v1.49.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	go.elastic.co/apm/module/apmfasthttp/v2 v2.4.4 // indirect
-	go.elastic.co/apm/module/apmfiber/v2 v2.4.4 // indirect
-	go.elastic.co/apm/module/apmhttp/v2 v2.4.4 // indirect
-	go.elastic.co/apm/module/apmotel/v2 v2.4.4 // indirect
-	go.elastic.co/apm/v2 v2.4.4 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
-	go.opentelemetry.io/otel v1.17.0 // indirect
 	go.opentelemetry.io/otel/metric v1.17.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.17.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v0.40.0 // indirect
