@@ -18,7 +18,7 @@ require (
 	go.elastic.co/apm/v2 v2.4.4
 	go.elastic.co/ecszap v1.0.2
 	go.opentelemetry.io/otel v1.17.0
-	go.uber.org/zap v1.25.0
+	go.uber.org/zap v1.26.0
 )
 
 require (
