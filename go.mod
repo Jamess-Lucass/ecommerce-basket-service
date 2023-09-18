@@ -44,7 +44,7 @@ require (
 	github.com/redis/go-redis/extra/rediscmd/v9 v9.0.5 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/fasthttp v1.49.0 // indirect
+	github.com/valyala/fasthttp v1.50.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	go.elastic.co/apm/module/apmfasthttp/v2 v2.4.4 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
