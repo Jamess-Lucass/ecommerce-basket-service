@@ -10,7 +10,7 @@ require (
 	github.com/google/uuid v1.3.1
 	github.com/rabbitmq/amqp091-go v1.8.1
 	github.com/redis/go-redis/extra/redisotel/v9 v9.0.5
-	github.com/redis/go-redis/v9 v9.1.0
+	github.com/redis/go-redis/v9 v9.2.0
 	github.com/samber/lo v1.38.1
 	go.elastic.co/apm/module/apmfiber/v2 v2.4.4
 	go.elastic.co/apm/module/apmhttp/v2 v2.4.4
