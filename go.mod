@@ -17,7 +17,7 @@ require (
 	go.elastic.co/apm/module/apmotel/v2 v2.4.4
 	go.elastic.co/apm/v2 v2.4.4
 	go.elastic.co/ecszap v1.0.2
-	go.opentelemetry.io/otel v1.17.0
+	go.opentelemetry.io/otel v1.21.0
 	go.uber.org/zap v1.26.0
 )
 
@@ -29,7 +29,7 @@ require (
 	github.com/elastic/go-sysinfo v1.7.1 // indirect
 	github.com/elastic/go-windows v1.0.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
-	github.com/go-logr/logr v1.2.4 // indirect
+	github.com/go-logr/logr v1.3.0 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
@@ -48,10 +48,10 @@ require (
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	go.elastic.co/apm/module/apmfasthttp/v2 v2.4.4 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
-	go.opentelemetry.io/otel/metric v1.17.0 // indirect
+	go.opentelemetry.io/otel/metric v1.21.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.17.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v0.40.0 // indirect
-	go.opentelemetry.io/otel/trace v1.17.0 // indirect
+	go.opentelemetry.io/otel/trace v1.21.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.13.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
